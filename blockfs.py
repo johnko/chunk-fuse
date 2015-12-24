@@ -260,8 +260,8 @@ if __name__ == '__main__':
 	mountdir = sys.argv[3]
 	if len(sys.argv) > 4:
 		passwordfile = sys.argv[4]
-		if len(file(passwordfile, 'rb').read()) != 16:
-			password = hashlib.sha256(file(passwordfile, 'rb').read()).digest()[:16]
+		if len(file(passwordfile, 'rb').read()) != 32:
+			password = hashlib.sha256(file(passwordfile, 'rb').read()).digest()
 		else:
 			password = file(passwordfile, 'rb').read()
 		print 'using password', password
@@ -269,5 +269,3 @@ if __name__ == '__main__':
 	b = BlockFS(folder, nchunks, password)
 	fuse = FUSE(b, mountdir, nothreads=True, foreground=True,
 		allow_root=True)
-	
-
