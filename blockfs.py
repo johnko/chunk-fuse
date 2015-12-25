@@ -264,7 +264,7 @@ if __name__ == '__main__':
 			password = hashlib.sha256(file(passwordfile, 'rb').read()).digest()
 		else:
 			password = file(passwordfile, 'rb').read()
-		print 'using password', password
+		# print 'using password', password
 		gc.collect()
 	b = BlockFS(folder, nchunks, password)
 	fuse = FUSE(b, mountdir, nothreads=True, foreground=True,

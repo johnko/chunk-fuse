@@ -45,5 +45,13 @@ Encryption / compression details
 * GPG was considered, but requires you to still have access to your secret gpg 
   file -- which may not be true for backups.
 
+FreeBSD Prerequisites
+-----------------------
 
+kldload fuse
 
+pkg install -y \
+    py27-fusefs \
+    py27-pycrypto
+
+sysctl vfs.usermount=1
